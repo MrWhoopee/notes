@@ -14,3 +14,13 @@
       <p>Текст</p>
   </li>
 */
+import { tasksForm } from "./js/refs";
+import { createTask } from "./js/tasks";
+import { loadLS, saveLS } from "./js/local-storage-api";
+
+export const tasks = loadLS();
+
+tasksForm.addEventListener("submit", (event) => {
+  createTask(event, tasks);
+  saveLS(tasks);
+});
